@@ -7,7 +7,7 @@ on:
 
 jobs:
   build-windows:
-    runs-on: windows-latest
+    runs-on: windows-2022
     defaults:
       run:
         working-directory: outmng_src
@@ -31,7 +31,10 @@ jobs:
 
       - name: Analyze
         run: flutter analyze
-
+        
+      - name: Setup MSBuild
+        uses: ilammy/msvc-dev-cmd@v1
+        
       - name: Build Windows release
         run: flutter build windows --release
 
